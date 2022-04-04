@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class SimpleTest {
 
     @BeforeAll
-    static void openPage() {
+    static void settingsTest() {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
         Configuration.holdBrowserOpen = true;
@@ -44,7 +44,7 @@ public class SimpleTest {
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(lastName);
         $("#userEmail").setValue(email);
-        $(byText(gender)).click();
+        $("#genterWrapper").$(byText(gender)).click();
         $("#userNumber").setValue(phoneNumber);
 
         //выбор даты рождения
@@ -56,8 +56,9 @@ public class SimpleTest {
         //выбор хобби
         $("#subjectsInput").setValue(subject).pressEnter();
         $("#subjectsInput").setValue(subject01).pressEnter();
-        $(byText(hobbi)).click();
-        $(byText(hobbi01 )).click();
+        $("#hobbiesWrapper").$(byText(hobbi)).click();
+        $("#hobbiesWrapper").$(byText(hobbi01)).click();
+
 
         $("#uploadPicture").uploadFromClasspath(file); //Выбор картинки
         //выбор штата и города
@@ -83,7 +84,5 @@ public class SimpleTest {
                text(adress),
                text(state + " " + city)
        );
-
-       $("#closeLargeModal").click();
     }
 }
